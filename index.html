@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.css">
+    
+    <style>
+        #menu_control{
+            position: absolute;
+            z-index: -2;
+            opacity: 0;
+        }
+        .header{
+            height: 60px;
+            background-color:gainsboro;
+            position: relative;
+            opacity: 70%;
+        }
+        .logo{
+            width: 60px;
+            height: 60px;
+            margin-left: 10px;
+        }
+        .logo a{
+            display: block;
+            height: 40px;
+        }
+        .logo img{
+            display: ;
+            border-radius: 50%;
+        }
+        .menu_btn{
+            width: 40px;
+            height: 40px;
+            /* background-color: grey; */
+            display: block;
+            position: absolute;
+            top: 5px;
+            right: 10px;
+        }
+        .menu_btn span{
+            opacity: 0;
+            width: 1px;
+            height: 1px;
+            display: block;
+            overflow: hidden;
+        }
+        .menu_btn::before{
+            content: '';
+            position: absolute;
+            height: 2px;
+            width: 36px;
+            left: 2px;
+            background-color: black;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            box-shadow:0px 8px 0px black,
+                        0px -8px 0px black;
+        }
+        nav{
+            /* width: 80%;
+            height: calc(100vh - 50px);
+            background-color: powderblue;
+            position: absolute;
+            left: -100%;
+            transition: .5s; */
+        }
+        nav a{
+            display: block;
+            text-decoration: none;
+            color: black;
+            padding: 10px 20px;
+            border-bottom: 1px solid;
+        }
+        #menu_control:checked ~ .header nav{
+            left: 0;
+        }
+        @media screen and (max-width:767px){
+            nav{
+                width: 80%;
+                height: calc(100vh - 50px);
+                background-color: grey;
+                position: absolute;
+                left: -100%;
+                transition: .5s;
+            }
+        }
+        @media screen and (min-width:768px){
+            .menu_btn{display: none;}
+            .header{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .logo{
+
+            }
+            nav{
+                position: relative;
+                left: 0;
+                display: flex;
+                width: auto;
+                height: auto;
+                background-color: transparent;
+            }
+            nav a{
+                text-decoration: none;
+            }
+            nav a:hover{
+                text-decoration: line-through;
+            }
+        }
+        img{
+            vertical-align: bottom;
+        }
+        .footer{
+            background-color: gray;
+            color: black;
+            text-align: center;
+            opacity: 30%;
+        }
+        .item-group{
+            max-width: 1200px;
+            width: 100% ;
+            margin: auto;
+        }
+        .banner_title{
+            position:absolute ;left:50% ;top:50% ;translateX(-30%) ;translateY(-50%) ;
+            font-size: 30px;
+        }
+        .banner_title:hover{
+            opacity: 30%;
+            transition: .5s;
+        }
+        .banner img{
+            width: 100%;
+        }
+        .banner img:hover{
+            width: 100%;
+            -webkit-filter:blur(3px);
+            transition: 1s;
+        }
+        .title{
+            margin: 0; 
+            padding: 30px 10px;
+            /* background-color: lightblue; */
+            border-bottom: 1px solid;
+        }
+        .title h2{
+            text-align: center;
+            font-size: 30px;
+            border-top: 1px solid;
+            padding: 20px;
+        }
+        .title a img{
+            width: 5%;
+            margin: auto;
+            display: block;
+        }
+        .title a img:hover{
+            /* width: 5%;
+            margin: auto;
+            display: block; */
+            -webkit-filter:blur(3px);
+            transition: 1s;
+        }
+        .title p{
+            font-size: 18px;
+            text-align: center ;
+        }
+        .item{
+            margin: 0 10px 40px;
+        }
+        .item h3{
+            font-size: 18px;
+            text-align: center ;
+        }
+        .text h3{
+            text-align: center ;
+        }
+        .text p{
+            text-align: center ;
+        }
+        .item .pic img{
+            width: 50%;
+            padding: 60px;
+            /* border-radius: 50%; */
+        }
+        .item .pic img:hover{
+            width: 50%;
+            padding: 60px;
+            -webkit-filter:blur(3px);
+            transition: 1s;
+            /* border-radius: 50%; */
+        }
+        /* .item2{
+
+        } */
+        .item2 .pic img{
+            width:  100%;
+            /* padding: 60px; */
+            /* border-radius: 50%; */
+            margin: 20px;
+        }
+        .item2 .pic img:hover{
+            width:  100%;
+            /* padding: 60px; */
+            /* border-radius: 50%; */
+            margin: 20px;
+            -webkit-filter:blur(3px);
+            transition: 1s;
+        }
+        .service{
+            padding: 60px 0;
+            /* background-color: lightpink ; */
+            /* border-bottom: 1px solid; */
+        }
+        @media screen and (min-width: 768px ){
+            .item-group{
+                display: flex;
+                margin: auto;
+                /* width: 100%; */
+                padding: 20px;
+            }
+            .service .item{
+                display: flex;
+                /* margin: auto;
+                padding: 20px; */
+            }
+            .service .item .pic{
+                /* width: 50%; */
+            }
+            .service .item .text{
+                width: 50%;
+                margin: 0;
+            }
+            .service .item .text{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 0 20px;
+                box-sizing: border-box;
+            }
+        }
+    </style>
+</head>
+<body>
+    <input type="checkbox" id="menu_control">
+
+   <div class="header">
+       <h1 class="logo">
+        <!-- <a href="#"><img src="http://fakeimg.pl/60x60/" alt=""></a> -->
+       </h1>
+       <label for="menu_control" class="menu_btn">
+           <span>menu</span>
+       </label>
+       <nav>
+           <a href="#">about</a>
+           <a href="#">project</a>
+           <a href="#">contact</a>
+           <a href="#">resume</a>
+       </nav>
+       
+   </div> 
+   <div class="banner">
+    <img src="images/banner.png" alt="">
+    <div class="banner_title">KAI TING</div>
+   </div>
+   <div class="about">
+       <div class="wrap">
+           <div class="title">
+               <h2>Kaiting</h2>
+               <p>Kaiting is a designer who is passionate about bringing ideas to life.  
+               </p>
+           </div>
+           <div class="item-group">
+                <div class="item">
+                    <div class="pic"><img src="images/icon01.png" alt="" width="50%">
+                    </div>
+                    <div class="text">
+                        <h3>project 1</h3>
+                       <p>Lorem ipsum dolor sit amet</p>
+                   </div> 
+                </div>
+                <div class="item">
+                    <div class="pic"><img src="images/icon02.png" alt="">
+                    </div>
+                    <div class="text">
+                        <h3>project 2</h3>
+                       <p>Lorem ipsum dolor sit amet</p>
+                   </div>
+                </div>
+                <div class="item">
+                    <div class="pic"><img src="images/icon03.png" alt="">
+                    </div>
+                <div class="text">
+                     <h3>project 3</h3>
+                    <p>Lorem ipsum dolor sit amet</p>
+                </div>
+                </div>
+           </div>
+           <div class="item-group">
+            <div class="item">
+                <div class="pic"><img src="images/icon04.png" alt="">
+                </div>
+                <div class="text">
+                    <h3>project 4</h3>
+                   <p>Lorem ipsum dolor sit amet</p>
+               </div> 
+            </div>
+            <div class="item">
+                <div class="pic"><img src="images/icon05.png" alt="">
+                </div>
+                <div class="text">
+                    <h3>project 5</h3>
+                   <p>Lorem ipsum dolor sit amet</p>
+               </div>
+            </div>
+            <div class="item">
+                <div class="pic"><img src="images/icon06.png" alt="">
+                </div>
+            <div class="text">
+                 <h3>project 6</h3>
+                <p>Lorem ipsum dolor sit amet</p>
+            </div>
+            </div>
+       </div>
+           
+       </div>
+   </div>
+   <div class="service">
+       <div class="wrap">
+           <div class="item-group">
+               <div class="item2">
+                   <div class="pic">
+                    <img src="images/item2.png" alt="">
+                   </div>
+                   <!-- <div class="text">xxxxxxx</div> -->
+               </div>
+           </div>
+       </div>
+   </div>
+   <div class="about">
+    <div class="wrap">
+        <div class="title">
+            <h2>contact</h2>
+            <a href="https://www.instagram.com/kaitin___/?hl=zh-tw">
+            <img src="images/igicon.jpg" alt=""></a>
+        </div>
+        <div class="item-group">
+             <div class="item2">
+                 <div class="pic"><img src="images/01.png" alt="">
+                 </div>
+                 <div class="text">
+                     <h3>title</h3>
+                    <p>Lorem ipsum dolor sit amet</p>
+                </div> 
+             </div>
+             <div class="item2">
+                 <div class="pic"><img src="images/02.png" alt="">
+                 </div>
+                 <div class="text">
+                     <h3>title</h3>
+                    <p>Lorem ipsum dolor sit amet</p>
+                </div>
+             </div>
+             <div class="item2">
+                 <div class="pic"><img src="images/03.png" alt="">
+                 </div>
+             <div class="text">
+                  <h3>title</h3>
+                 <p>Lorem ipsum dolor sit amet</p>
+             </div>
+             </div>
+        </div>
+    </div>
+</div> 
+
+<div class="footer"> 
+    &copy; copyright 2020 by Kaiting Tsai
+</div>
+</body>
+</html>
